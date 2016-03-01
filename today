@@ -1,3 +1,9 @@
 #!/bin/bash
 
-vim $(date +"%Y-%m-%d").md
+FILE="$(date +"%Y-%m-%d").md"
+
+if [[ ! -e $FILE ]]; then
+  cat ./*-*-*.md | grep -v "\[[X-]\]" > $FILE
+fi
+
+vim $FILE
