@@ -1,20 +1,20 @@
 #!/bin/bash
 
 TODAY="$(date +"%Y-%m-%d").md"
-LAST=
-
-I=1
-while [[ $I -lt 30 ]]; do
- NAME=$(date -d "-$I days" +"%Y-%m-%d").md
- echo $NAME
- if [[ -e $NAME ]]; then
-   LAST=$NAME
-   break;
- fi
- I=$((I+1))
-done
 
 if [[ ! -e $TODAY ]]; then
+  LAST=
+  I=1
+  while [[ $I -lt 30 ]]; do
+   NAME=$(date -d "-$I days" +"%Y-%m-%d").md
+   echo $NAME
+   if [[ -e $NAME ]]; then
+     LAST=$NAME
+     break;
+   fi
+   I=$((I+1))
+  done
+
   cat $LAST | grep -v "\[[Xx-]\]" > $TODAY
 fi
 
