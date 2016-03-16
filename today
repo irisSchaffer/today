@@ -18,4 +18,5 @@ if [[ ! -e $TODAY ]]; then
   cat $LAST | grep -v "\[[Xx-]\]" > $TODAY
 fi
 
-vim $TODAY
+ln -fs $TODAY ./today.md
+vim ./today.md
